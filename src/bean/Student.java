@@ -47,4 +47,8 @@ public class Student {
     public void setStudentAge(int studentAge) {
         this.studentAge = studentAge;
     }
+
+    public String getFullInfo(){
+        return this.getName() + " " +  this.getSurname() + " " + this.getClassName() + " "+ this.getStudentAge();
+    }
 }
