@@ -37,4 +37,33 @@ public class StudentUtil {
         System.out.println("Registrations Completed Successfully");
         StudentUtil.printAllRegisteredStudnets();
     }
+    public static void findStudentsAndPrint(){
+        String text = InputUtil.requireText("Type Text: name ,surname or classname");
+        Student[] result = findStudents(text);
+        for (int i=0;i<result.length;i++){
+            System.out.println(result[i].getFullInfo());
+        }
+    }
+
+    public static Student[] findStudents(String text){
+        int count =0;
+        for (int i=0;i<Config.students.length;i++){
+            Student st = Config.students[i];
+            if (st.getName().contains(text) || st.getSurname().contains(text) || st.getClassName().contains(text)){
+                count++;
+            }
+        }
+
+        Student[] result = new Student[count];
+
+        for (int i=0;i<Config.students.length;i++){
+            int found =0;
+            Student st = Config.students[i];
+            if (st.getName().contains(text) || st.getSurname().contains(text) || st.getClassName().contains(text)){
+                result[found] = st;
+                found++;
+            }
+        }
+        return result;
+    }
 }
