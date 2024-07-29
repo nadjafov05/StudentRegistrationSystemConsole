@@ -21,7 +21,7 @@ public class Main {
             for (int i=0;i<Config.students.length;i++){
                 Student st = Config.students[i];
                 if (st.getName().contains(text) || st.getSurname().contains(text) || st.getClassName().contains(text)){
-
+                    st.getFullInfo();
                 }
             }
         }

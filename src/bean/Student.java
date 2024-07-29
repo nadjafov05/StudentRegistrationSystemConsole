@@ -51,4 +51,5 @@ public class Student {
     public String getFullInfo(){
         return this.getName() + " " +  this.getSurname() + " " + this.getClassName() + " "+ this.getStudentAge();
     }
+
 }

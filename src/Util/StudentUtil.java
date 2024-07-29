@@ -21,7 +21,7 @@ public class StudentUtil {
         }
         for (int i = 0; i< Config.students.length; i++){
             Student st = Config.students[i];
-            System.out.println("Name: "+ st.getName() + " : " + "Surname: "+st.getSurname() +" : " +"ClassName: "+ st.getClassName() +" : "+"Age: " + st.getStudentAge());
+            System.out.println(st.getFullInfo());
         }
     }
 
