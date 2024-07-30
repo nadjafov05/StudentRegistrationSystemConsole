@@ -21,7 +21,7 @@ public class StudentUtil {
         }
         for (int i = 0; i< Config.students.length; i++){
             Student st = Config.students[i];
-            System.out.println(st.getFullInfo());
+            System.out.println((i+1) + ":"+st.getFullInfo());
         }
     }
 
@@ -66,4 +66,59 @@ public class StudentUtil {
         }
         return result;
     }
+    public static void updateStudentNewObject(){
+        StudentUtil.printAllRegisteredStudnets();
+        int i = InputUtil.requireNumber("Enters number index in Users");
+        Student s = StudentUtil.fillStudent();
+        Config.students[i-1] = s;
+        StudentUtil.printAllRegisteredStudnets();
+    }
+
+    public static void updateStudentSameObject(){
+        StudentUtil.printAllRegisteredStudnets();
+
+        int i = InputUtil.requireNumber("Which student would you like to make changes to?");
+
+        System.out.println("Enter the new information");
+        Student selectedStudent  = Config.students[i-1];
+        String changeParams = InputUtil.requireText("What do you want to change in the students? 'name','surname', 'classname' or 'age'");
+
+        if (changeParams.contains("'name'")){
+            selectedStudent.setName(InputUtil.requireText("name"));
+        }
+        if (changeParams.contains("'surname'")){
+            selectedStudent.setSurname(InputUtil.requireText("surname"));
+        }
+        if (changeParams.contains("'classname'")){
+            selectedStudent.setClassName(InputUtil.requireText("classname"));
+        }
+        if (changeParams.contains("'age'")){
+            selectedStudent.setStudentAge(InputUtil.requireNumber("age"));
+        }
+    }
+
+    public static void updateStudentWithSplit(){
+        StudentUtil.printAllRegisteredStudnets();
+
+        int index = InputUtil.requireNumber("Which student would you like to make changes to?");
+
+        System.out.println("Enter the new information");
+        Student selectedStudent  = Config.students[index-1];
+        String changeParams = InputUtil.requireText("What do you want to change in the students? 'name','surname', 'classname' or 'age'");
+
+        String[] parametrs = changeParams.split(",");
+        for (int i=0;i<parametrs.length;i++) {
+            String param = parametrs[i];
+            if (param.equalsIgnoreCase("name")) {
+                selectedStudent.setName(InputUtil.requireText("name"));
+            }else if (param.equalsIgnoreCase("surname")) {
+                selectedStudent.setSurname(InputUtil.requireText("surname"));
+            }else if (param.equalsIgnoreCase("classname")) {
+                selectedStudent.setClassName(InputUtil.requireText("classname"));
+            }else if (param.equalsIgnoreCase("age")) {
+                selectedStudent.setStudentAge(InputUtil.requireNumber("age"));
+            }
+        }
+    }
+
 }

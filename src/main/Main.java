@@ -1,6 +1,7 @@
 package main;
 
 import Util.InputUtil;
+import Util.MenuUtil;
 import Util.StudentUtil;
 import bean.Student;
 
@@ -13,14 +14,7 @@ public class Main {
                     "\n 2. Show all Stundets" +
                     "\n 3. Find Student" +
                     "\n 4. Update Student");
-
-            if (menu == 1) {
-                StudentUtil.registerStudents();
-            }else if (menu == 2){
-                StudentUtil.printAllRegisteredStudnets();
-            }else if (menu == 3){
-                StudentUtil.findStudentsAndPrint();
-            }
+            MenuUtil.processMenu(menu);
         }
     }
 }
